@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tic tac toe</title>
+	<style>
+	body{
+		margin:0;
+		margin-top: 0;
+	}
+	.tbl{
+		margin-left: 480px;
+		margin-top:100px;
+	}
+		.col1{
+			height:100px;
+	        width:100px;
+	        border:1px solid red;
+			text-align: center;
+			font-size: 50px;
+		}
+		.red{
+			color: red;
+		}
+
+		#replay {
+			text-align: center;
+			font-size: 50px;
+			font-family: tahoma;
+			background: #95a5a6;
+			padding:10px 0;
+
+		}
+		
+
+	</style>
+</head>
+<body>
+	<div id="replay">
+	Lets play
+</div>
+	<table  id="tbl"class="tbl" border="1">
+ <tr>
+	<td id="g1" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g2" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g3" class="col1"onClick="nextMoves(this);"></td>
+</tr>
+<tr>
+	<td id="g4" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g5" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g6" class="col1"onClick="nextMoves(this);"></td>
+</tr>
+<tr>
+	<td id="g7" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g8" class="col1"onClick="nextMoves(this);"></td>
+	<td id="g9" class="col1"onClick="nextMoves(this);"></td>
+</tr> 
+
+</table>
+
+<script>
+	
+
+		var ip="X";
+	var stop=null;
+	var count=0;
+
+	function nextMoves(col1){
+		count+=1;
+		if(stop!=null){
+			}
+	
+		else if(col1.innerText===""){
+		col1.innerText=ip;
+		if(col1.innerText==="X"){
+		col1.classList.add("red");
+	}
+	   
+		switchTurn();
+
+	}
+
+	
+
+	else{
+		alert(" Not your turns");
+	}
+	}
+	function switchTurn(){
+		 var a1=document.getElementById("g1").innerText;
+		var a2=document.getElementById("g2").innerText;
+		var a3=document.getElementById("g3").innerText;
+		var a4=document.getElementById("g4").innerText;
+		var a5=document.getElementById("g5").innerText;
+		var a6=document.getElementById("g6").innerText;
+		var a7=document.getElementById("g7").innerText;
+		var a8=document.getElementById("g8").innerText;
+		var a9=document.getElementById("g9").innerText;
+		 
+			 if( a1==="X"&&a2==="X"&&a3==="X"||
+				a4==="X"&&a5==="X"&&a6==="X"||
+				a7==="X"&&a8==="X"&&a9==="X"||
+				a1==="X"&&a4==="X"&&a7==="X"||
+				a2==="X"&&a5==="X"&&a8==="X"||
+				a3==="X"&&a6==="X"&&a9==="X"||
+				a1==="X"&&a5==="X"&&a9==="X"||
+				a3==="X"&&a5==="X"&&a7==="X" ){
+            alert("X won the Game");
+        stop=1;
+           clear();
+             		}
+		else if(a1==="O"&&a2==="O"&&a3==="O"||
+				a4==="O"&&a5==="O"&&a6==="O"||
+				a7==="O"&&a8==="O"&&a9==="O"||
+				a1==="O"&&a4==="O"&&a7==="O"||
+				a2==="O"&&a5==="O"&&a8==="O"||
+				a3==="O"&&a6==="O"&&a9==="O"||
+				a1==="O"&&a5==="O"&&a9==="O"||
+				a3==="O"&&a5==="O"&&a7==="O"){
+				alert("O won the Game");
+			stop=1;
+			clear();
+		}
+		else if(count===9){
+			//clr();
+			alert("Cats game!");
+			stop=1;
+			clear();
+			
+			var again1=document.getElementById("replay");
+		again1.innerText="To Continue Refresh  the page plz";
+		
+		}
+		
+		 else if(ip==="X"){
+			ip="O";
+
+		}
+
+		
+		else  {
+			ip="X";
+				
+		}
+
+		
+	
+
+	}
+	function clear(){
+
+		for(var i=1;i<=9;i++){
+		let ab=document.getElementById("g"+i);
+		ab.innerText="";
+        refresh();
+		
+
+
+	}
+	function refresh(){
+		var again=document.getElementById("replay");
+		again.innerText="To Continue Refresh  the page plz";
+	}
+	
+}
+
+// for(var i=1;i<=9;i++){
+// 		let ab=document.getElementById("g"+i);
+//         if(ab.innerText==="X"||ab.innerText==="O"){
+// 			alert("jhhhh");
+// 		}
+// 	}
+// function clr(){
+// 	alert("hasjdhasj");
+// }
+	
+</script>	
+</body>
+</html>
